@@ -1,0 +1,222 @@
+/* 🔷 Modal animación suave */
+#resultadoModal .modal-content {
+    animation: fadeInUp 0.5s ease-out;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 💫 Keyframes de entrada */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 💡 Íconos y contenido más destacado */
+.resultado-box h3 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.resultado-box p {
+    font-size: 16px;
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resultado-box i {
+    color: #0066cc;
+    font-size: 18px;
+}
+
+.precio {
+    font-weight: bold;
+    color: #2e7d32;
+}
+.seguro {
+    font-weight: bold;
+    color: #35589b;
+}
+.descuento {
+    font-weight: bold;
+    color: #f5bc00;
+}
+.total {
+    font-weight: bold;
+    color: #d84315;
+    font-size: 18px;
+}
+
+.resultado-box ul {
+    margin-top: 5px;
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.resultado-box ul li {
+    list-style-type: '📦 ';
+    padding-left: 6px;
+    margin-bottom: 4px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+button {
+    background-color: #d63f2e;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #e74c3c;
+}
+
+button.volumetrico:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none;
+}
+
+.suggestions-box p {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin: 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.suggestions-box p:hover {
+    background: #ecf0f1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn,
+.close-modal-btn,
+.close-volumetric-btn {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover,
+.close-modal-btn:hover,
+.close-volumetric-btn:hover {
+    color: #e74c3c;
+}
+
+#resultadoContenido ul {
+    padding-left: 20px;
+}
+
+#resultadoContenido li {
+    list-style: disc;
+    margin-bottom: 4px;
+}
+
+.error-msg {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
+.input-icon-wrapper {
+    position: relative;
+}
+.input-icon-wrapper input {
+    padding-right: 30px;
+}
+.estado-icono {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    pointer-events: none;
+}
