@@ -272,17 +272,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function registrarEvento(nombre) {
-        fetch('https://script.google.com/macros/s/AKfycbyH9XQ-icslzj_eZfQQAAc3PXS8cmy7FWmEbYmUy5grdM0xBT9hb-wjYqv7JNi7RqeUqg/exec', {
-            method: 'POST',
-            body: JSON.stringify({ nombre }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(res => res.json())
-            .then(data => console.log('Registro enviado:', data))
-            .catch(err => console.error('Error registrando:', err));
-    }
+    fetch('https://script.google.com/macros/s/AKfycbyH9XQ-icslzj_eZfQQAAc3PXS8cmy7FWmEbYmUy5grdM0xBT9hb-wjYqv7JNi7RqeUqg/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nombre })
+    })
+    .then(res => res.json())
+    .then(data => console.log('Registro exitoso:', data))
+    .catch(err => console.error('Error registrando:', err));
+}
 
 
     if ('serviceWorker' in navigator) {
