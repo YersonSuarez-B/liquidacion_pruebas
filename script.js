@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function registrarEvento(nombre) {
-        fetch('https://script.google.com/macros/s/AKfycbyaeCBbZXIARfGoil3QADZU0DJeCK9w4t4NdiyMwTiRdPosOsRMFcxQOHF1lf3WAfnorQ/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyH9XQ-icslzj_eZfQQAAc3PXS8cmy7FWmEbYmUy5grdM0xBT9hb-wjYqv7JNi7RqeUqg/exec', {
             method: 'POST',
             body: JSON.stringify({ nombre }),
             headers: {
