@@ -171,9 +171,6 @@ if (nombreGuardado) {
         const peso = parseFloat(pesoTotalInput.value);
         const valor = parseFloat(valorDeclaradoInput.value.replace(/\./g, '').replace(/\D/g, '')) || 0;
         const nombreUsuario = localStorage.getItem('nombreUsuario') || 'Anónimo';
-
-
-
         // Extraer valores de calzado incluso si no se van a usar
         unidades30 = parseInt(document.getElementById('calzado_30_60').value) || 0;
         unidades60 = parseInt(document.getElementById('calzado_60_90').value) || 0;
@@ -235,8 +232,19 @@ if (nombreGuardado) {
                 <p><i class="fas fa-coins"></i><strong>Total a Pagar:</strong> <span class="total">$${Math.trunc(costoTotal).toLocaleString('es-CO')}</span></p>
             </div>`;
         resultadoModal.style.display = 'block';
+        registrarEvento(
+    nombreUsuario,
+    ciudad,
+    tipo,
+    peso || '',
+    unidades || '',
+    valor,
+    Math.trunc(costoCaja),
+    Math.trunc(costoSeguro),
+    Math.trunc(costoTotal)
+);
         guardarEnLocalStorage();
-        registrarEvento(nombreUsuario);
+        
     });
 
     function guardarEnLocalStorage() {
@@ -277,16 +285,7 @@ if (nombreGuardado) {
         location.reload();
     });
 
-function registrarEvento(nombre) {
-    const ciudad = ciudadDestino.value.trim().toUpperCase();
-    const tipoCaja = tipoCajaSelect.value;
-    const peso = pesoTotalInput.value || "";
-    const unidades = numUnidadesInput.value || "";
-    const valor = valorDeclaradoInput.value.replace(/\./g, '').replace(/\D/g, '') || "";
-    const costoEnvio = Math.trunc(costoCaja);
-    const costoSeguro = Math.trunc(costoSeguro);
-    const total = Math.trunc(costoTotal);
-
+function registrarEvento(nombre, ciudad, tipoCaja, peso, unidades, valor, costoEnvio, costoSeguro, total) {
     const params = new URLSearchParams();
     params.append("nombre", nombre);
     params.append("ciudad", ciudad);
@@ -309,6 +308,8 @@ function registrarEvento(nombre) {
     .then(data => console.log('Registro enviado:', data))
     .catch(err => console.error('Error registrando:', err));
 }
+
+
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
