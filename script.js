@@ -52,20 +52,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }));
 
     guardarNombreBtn.addEventListener('click', () => {
-    const nombre = nombreInput.value.trim();
-    if (nombre.length >= 3) {
-        localStorage.setItem('nombreUsuario', nombre);
+        const nombre = nombreInput.value.trim();
+        if (nombre.length >= 3) {
+            localStorage.setItem('nombreUsuario', nombre);
+            seccionNombre.style.display = 'none';
+            formularioCampos.style.display = 'block';
+        } else {
+            alert('Por favor escribe un nombre válido (mínimo 3 letras).');
+        }
+    });
+    const nombreGuardado = localStorage.getItem('nombreUsuario');
+    if (nombreGuardado) {
         seccionNombre.style.display = 'none';
         formularioCampos.style.display = 'block';
-    } else {
-        alert('Por favor escribe un nombre válido (mínimo 3 letras).');
     }
-});
-const nombreGuardado = localStorage.getItem('nombreUsuario');
-if (nombreGuardado) {
-    seccionNombre.style.display = 'none';
-    formularioCampos.style.display = 'block';
-}
 
 
     // Mostrar u ocultar según si ya está guardado
@@ -233,18 +233,18 @@ if (nombreGuardado) {
             </div>`;
         resultadoModal.style.display = 'block';
         registrarEvento(
-    nombreUsuario,
-    ciudad,
-    tipo,
-    peso || '',
-    unidades || '',
-    valor,
-    Math.trunc(costoCaja),
-    Math.trunc(costoSeguro),
-    Math.trunc(costoTotal)
-);
+            nombreUsuario,
+            ciudad,
+            tipo,
+            peso || '',
+            unidades || '',
+            valor,
+            Math.trunc(costoCaja),
+            Math.trunc(costoSeguro),
+            Math.trunc(costoTotal)
+        );
         guardarEnLocalStorage();
-        
+
     });
 
     function guardarEnLocalStorage() {
@@ -285,29 +285,29 @@ if (nombreGuardado) {
         location.reload();
     });
 
-function registrarEvento(nombre, ciudad, tipoCaja, peso, unidades, valor, costoEnvio, costoSeguro, total) {
-    const params = new URLSearchParams();
-    params.append("nombre", nombre);
-    params.append("ciudad", ciudad);
-    params.append("tipoCaja", tipoCaja);
-    params.append("peso", peso);
-    params.append("unidades", unidades);
-    params.append("valor", valor);
-    params.append("costoEnvio", costoEnvio);
-    params.append("costoSeguro", costoSeguro);
-    params.append("total", total);
+    function registrarEvento(nombre, ciudad, tipoCaja, peso, unidades, valor, costoEnvio, costoSeguro, total) {
+        const params = new URLSearchParams();
+        params.append("nombre", nombre);
+        params.append("ciudad", ciudad);
+        params.append("tipoCaja", tipoCaja);
+        params.append("peso", peso);
+        params.append("unidades", unidades);
+        params.append("valor", valor);
+        params.append("costoEnvio", costoEnvio);
+        params.append("costoSeguro", costoSeguro);
+        params.append("total", total);
 
-    fetch("https://script.google.com/macros/s/AKfycbwyqXzq06rKm7OcixVtTBa2SfB-QkMwYe1nG84uU5IsBTU3a8ChbN6lj4n-daRCV7JwEg/exec", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: params.toString()
-    })
-    .then(res => res.text())
-    .then(data => console.log('Registro enviado:', data))
-    .catch(err => console.error('Error registrando:', err));
-}
+        fetch("https://script.google.com/macros/s/AKfycbwyqXzq06rKm7OcixVtTBa2SfB-QkMwYe1nG84uU5IsBTU3a8ChbN6lj4n-daRCV7JwEg/exec", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params.toString()
+        })
+            .then(res => res.text())
+            .then(data => console.log('Registro enviado:', data))
+            .catch(err => console.error('Error registrando:', err));
+    }
 
 
 
