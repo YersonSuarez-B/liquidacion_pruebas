@@ -8,6 +8,11 @@
     transition: transform 0.3s ease-in-out;
 }
 
+#formularioCampos {
+    display: none;
+}
+
+
 /* 💫 Keyframes de entrada */
 @keyframes fadeInUp {
     0% {
@@ -46,14 +51,17 @@
     font-weight: bold;
     color: #2e7d32;
 }
+
 .seguro {
     font-weight: bold;
     color: #35589b;
 }
+
 .descuento {
     font-weight: bold;
     color: #f5bc00;
 }
+
 .total {
     font-weight: bold;
     color: #d84315;
@@ -206,12 +214,15 @@ button.volumetrico:disabled {
     font-size: 12px;
     margin-top: 4px;
 }
+
 .input-icon-wrapper {
     position: relative;
 }
+
 .input-icon-wrapper input {
     padding-right: 30px;
 }
+
 .estado-icono {
     position: absolute;
     right: 8px;
