@@ -278,8 +278,25 @@ if (nombreGuardado) {
     });
 
 function registrarEvento(nombre) {
+    const ciudad = ciudadDestino.value.trim().toUpperCase();
+    const tipoCaja = tipoCajaSelect.value;
+    const peso = pesoTotalInput.value || "";
+    const unidades = numUnidadesInput.value || "";
+    const valor = valorDeclaradoInput.value.replace(/\./g, '').replace(/\D/g, '') || "";
+    const costoEnvio = Math.trunc(costoCaja);
+    const costoSeguro = Math.trunc(costoSeguro);
+    const total = Math.trunc(costoTotal);
+
     const params = new URLSearchParams();
     params.append("nombre", nombre);
+    params.append("ciudad", ciudad);
+    params.append("tipoCaja", tipoCaja);
+    params.append("peso", peso);
+    params.append("unidades", unidades);
+    params.append("valor", valor);
+    params.append("costoEnvio", costoEnvio);
+    params.append("costoSeguro", costoSeguro);
+    params.append("total", total);
 
     fetch("https://script.google.com/macros/s/AKfycbwyqXzq06rKm7OcixVtTBa2SfB-QkMwYe1nG84uU5IsBTU3a8ChbN6lj4n-daRCV7JwEg/exec", {
         method: 'POST',
@@ -292,8 +309,6 @@ function registrarEvento(nombre) {
     .then(data => console.log('Registro enviado:', data))
     .catch(err => console.error('Error registrando:', err));
 }
-
-
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
