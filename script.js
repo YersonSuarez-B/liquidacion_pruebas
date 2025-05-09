@@ -52,15 +52,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }));
 
     guardarNombreBtn.addEventListener('click', () => {
-        const nombre = nombreInput.value.trim();
-        if (nombre) {
-            localStorage.setItem('nombreUsuario', nombre);
-            seccionNombre.style.display = 'none';
-            formularioCampos.style.display = 'block';
-        } else {
-            alert('Por favor escribe tu nombre.');
-        }
-    });
+    const nombre = nombreInput.value.trim();
+    if (nombre.length >= 3) {
+        localStorage.setItem('nombreUsuario', nombre);
+        seccionNombre.style.display = 'none';
+        formularioCampos.style.display = 'block';
+    } else {
+        alert('Por favor escribe un nombre válido (mínimo 3 letras).');
+    }
+});
+const nombreGuardado = localStorage.getItem('nombreUsuario');
+if (nombreGuardado) {
+    seccionNombre.style.display = 'none';
+    formularioCampos.style.display = 'block';
+}
+
 
     // Mostrar u ocultar según si ya está guardado
     document.addEventListener('DOMContentLoaded', () => {
