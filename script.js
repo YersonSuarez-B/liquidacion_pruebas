@@ -271,18 +271,22 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
     });
 
-    function registrarEvento(nombre) {
-    fetch('https://script.google.com/macros/s/AKfycbw-1U6vT5PV3zdpwv5M2L4z8wrqdjUl9z-qDdD8E2tzIFBEMQwPP34HfWv22XNE4WI6sg/exec', {
+function registrarEvento(nombre) {
+    const params = new URLSearchParams();
+    params.append("nombre", nombre);
+
+    fetch("https://script.google.com/macros/s/AKfycbwyqXzq06rKm7OcixVtTBa2SfB-QkMwYe1nG84uU5IsBTU3a8ChbN6lj4n-daRCV7JwEg/exec", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify({ nombre })
+        body: params.toString()
     })
-    .then(res => res.json())
-    .then(data => console.log('Registro exitoso:', data))
+    .then(res => res.text())
+    .then(data => console.log('Registro enviado:', data))
     .catch(err => console.error('Error registrando:', err));
 }
+
 
 
     if ('serviceWorker' in navigator) {
