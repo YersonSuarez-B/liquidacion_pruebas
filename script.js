@@ -237,10 +237,13 @@ document.addEventListener('DOMContentLoaded', function () {
             ciudad,
             tipo,
             peso || '',
-            unidades || '',
+            tipo === "normal"
+                ? unidades
+                : unidades30 + unidades60 + unidades90,
             valor,
             Math.trunc(costoCaja),
             Math.trunc(costoSeguro),
+            Math.trunc(kilosAdicionales),
             Math.trunc(costoTotal)
         );
         guardarEnLocalStorage();
@@ -285,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
     });
 
-    function registrarEvento(nombre, ciudad, tipoCaja, peso, unidades, valor, costoEnvio, costoSeguro, total) {
+    function registrarEvento(nombre, ciudad, tipoCaja, peso, unidades, valor, costoEnvio, costoSeguro, kilosAdicionales, total) {
         const params = new URLSearchParams();
         params.append("nombre", nombre);
         params.append("ciudad", ciudad);
@@ -295,6 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
         params.append("valor", valor);
         params.append("costoEnvio", costoEnvio);
         params.append("costoSeguro", costoSeguro);
+        params.append("kilosAdicionales", kilosAdicionales);
         params.append("total", total);
 
         fetch("https://script.google.com/macros/s/AKfycbwyqXzq06rKm7OcixVtTBa2SfB-QkMwYe1nG84uU5IsBTU3a8ChbN6lj4n-daRCV7JwEg/exec", {
