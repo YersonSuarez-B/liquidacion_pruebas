@@ -53,21 +53,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     guardarNombreBtn.addEventListener('click', () => {
         const nombre = nombreInput.value.trim();
-        if (nombre.length >= 3) {
+        const origen = document.getElementById('origenUsuario').value;
+
+        if (nombre.length >= 3 && origen) {
             localStorage.setItem('nombreUsuario', nombre);
+            localStorage.setItem('origenUsuario', origen);
             seccionNombre.style.display = 'none';
             formularioCampos.style.display = 'block';
         } else {
-            alert('Por favor escribe un nombre válido (mínimo 3 letras).');
+            alert('Por favor escribe tu nombre y selecciona una ciudad de origen.');
         }
     });
     const nombreGuardado = localStorage.getItem('nombreUsuario');
-    if (nombreGuardado) {
+    const origenGuardado = localStorage.getItem('origenUsuario');
+    if (nombreGuardado && origenGuardado) {
         seccionNombre.style.display = 'none';
         formularioCampos.style.display = 'block';
     }
-
-
     // Mostrar u ocultar según si ya está guardado
     document.addEventListener('DOMContentLoaded', () => {
         const nombre = localStorage.getItem('nombreUsuario');
@@ -232,8 +234,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><i class="fas fa-coins"></i><strong>Total a Pagar:</strong> <span class="total">$${Math.trunc(costoTotal).toLocaleString('es-CO')}</span></p>
             </div>`;
         resultadoModal.style.display = 'block';
+        const origenUsuario = localStorage.getItem('origenUsuario') || 'SIN ORIGEN';
         registrarEvento(
             nombreUsuario,
+            origenUsuario,
             ciudad,
             tipo,
             peso || '',
@@ -288,9 +292,10 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
     });
 
-    function registrarEvento(nombre, ciudad, tipoCaja, peso, unidades, valor, costoEnvio, costoSeguro, kilosAdicionales, total) {
+    function registrarEvento(nombre, origen, ciudad, tipoCaja, peso, unidades, valor, costoEnvio, costoSeguro, kilosAdicionales, total) {
         const params = new URLSearchParams();
         params.append("nombre", nombre);
+        params.append("origen", origen);
         params.append("ciudad", ciudad);
         params.append("tipoCaja", tipoCaja);
         params.append("peso", peso);
