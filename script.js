@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     const nombreGuardado = localStorage.getItem('nombreUsuario');
     const origenGuardado = localStorage.getItem('origenUsuario');
+    if (origenGuardado) {
+    document.getElementById('origenActual').innerText = `📍 Origen: ${origenGuardado}`;
+}
     if (nombreGuardado && origenGuardado) {
         seccionNombre.style.display = 'none';
         formularioCampos.style.display = 'block';
@@ -74,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('DOMContentLoaded', () => {
         const nombre = localStorage.getItem('nombreUsuario');
         if (nombre) {
+            seccionNombre.style.display = 'none';
+            formularioCampos.style.display = 'block';
+        } else {
             seccionNombre.style.display = 'none';
             formularioCampos.style.display = 'block';
         }
@@ -195,9 +201,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (tipo === "normal") {
             costoSeguro = valor <= 1000000 ? valor * 0.01 : valor * 0.005;
-            const tarifa = tarifas.normal?.[ciudad];
-            if (!tarifa) return mostrarError('Ciudad no encontrada.');
+
+            const origen = localStorage.getItem('origenUsuario')?.toUpperCase();
+            const tarifaCiudad = tarifas.normal?.[ciudad];
+
+            if (!tarifaCiudad || !tarifaCiudad[origen]) {
+                return mostrarError('Tarifa no encontrada para esta ciudad y origen.');
+            }
+
+            const tarifa = tarifaCiudad[origen];
             costoCaja = tarifa * unidades;
+
             const pesoMinimo = unidades * 30;
             if (peso > pesoMinimo) {
                 kilosAdicionales = (peso - pesoMinimo) * (tarifa / 30);
@@ -217,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="resultado-box">
                 <h3><i class="fas fa-receipt"></i> Resultados de la Liquidación</h3>
                 <p><i class="fas fa-box"></i> <strong>Tipo de Caja:</strong> ${tipo}</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Origen:</strong> ${origen}</p>
                 <p><i class="fas fa-map-marker-alt"></i> <strong>Ciudad de Destino:</strong> ${ciudad}</p>
                 ${tipo === 'normal' ? `<p><i class="fas fa-weight-hanging"></i> <strong>Peso Total:</strong> ${peso} kg</p>` : `
                 <div class="rangos">
@@ -234,7 +249,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><i class="fas fa-coins"></i><strong>Total a Pagar:</strong> <span class="total">$${Math.trunc(costoTotal).toLocaleString('es-CO')}</span></p>
             </div>`;
         resultadoModal.style.display = 'block';
-        const origenUsuario = localStorage.getItem('origenUsuario') || 'SIN ORIGEN';
+        const origen = localStorage.getItem('origenUsuario')?.toUpperCase() || 'NO DEFINIDO';
+
+resultadoContenido.innerHTML = `
+    <div class="resultado-box">
+        <h3><i class="fas fa-receipt"></i> Resultados de la Liquidación</h3>
+        <p><i class="fas fa-user"></i> <strong>Usuario:</strong> ${nombreUsuario}</p>
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Origen:</strong> ${origen}</p>
+        <p><i class="fas fa-box"></i> <strong>Tipo de Caja:</strong> ${tipo}</p>
+        <p><i class="fas fa-map-pin"></i> <strong>Ciudad de Destino:</strong> ${ciudad}</p>
+        ${tipo === 'normal' ? `<p><i class="fas fa-weight-hanging"></i> <strong>Peso Total:</strong> ${peso} kg</p>` : `
+        <div class="rangos">
+            <p><strong>Rangos Usados:</strong></p>
+            <ul>
+                ${unidades30 ? `<li>🟩 ${unidades30} unidad(es) 30-60 KG</li>` : ''}
+                ${unidades60 ? `<li>🟨 ${unidades60} unidad(es) 60-90 KG</li>` : ''}
+                ${unidades90 ? `<li>🟥 ${unidades90} unidad(es) 90-120 KG</li>` : ''}
+            </ul>
+        </div>`}
+        <hr>
+        <p><i class="fas fa-truck"></i> <strong>Costo Envío:</strong> <span class="precio">$${Math.trunc(costoCaja).toLocaleString('es-CO')}</span></p>
+        ${kilosAdicionales ? `<p><i class="fas fa-balance-scale"></i><strong>Kilos Adicionales:</strong><span class="precio"> $${Math.trunc(kilosAdicionales).toLocaleString('es-CO')}</p>` : ''}
+        <p><i class="fas fa-shield-alt"></i><strong>Costo Seguro:</strong><span class="seguro"> $${Math.trunc(costoSeguro).toLocaleString('es-CO')}</p>
+        <p><i class="fas fa-coins"></i><strong>Total a Pagar:</strong> <span class="total">$${Math.trunc(costoTotal).toLocaleString('es-CO')}</span></p>
+    </div>`;
+
         registrarEvento(
             nombreUsuario,
             origenUsuario,
