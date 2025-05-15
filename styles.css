@@ -11,6 +11,49 @@
 #formularioCampos {
     display: none;
 }
+#nombreSeccion {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+#nombreSeccion h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#nombreSeccion label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+#nombreSeccion input,
+#nombreSeccion select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#guardarNombreBtn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#guardarNombreBtn:hover {
+  background-color: #0056b3;
+}
 
 .nombre-box {
     max-width: 400px;
