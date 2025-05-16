@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('origenUsuario', origen);
             seccionNombre.style.display = 'none';
             encabezado.style.display = 'block';
-            document.getElementById('origenActual').innerText = `Origen: ${origen}`;
+            document.getElementById('origenActual').innerText = `${origen}`;
         } else {
             alert('Por favor escribe tu nombre y selecciona una ciudad de origen.');
         }
