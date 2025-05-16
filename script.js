@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         seccionNombre.style.display = 'block';
         encabezado.style.display = 'none';
     } else if (nombreGuardado && origenGuardado) {
-        document.getElementById('origenActual').innerText = `📍 Origen: ${origenGuardado}`;
+        document.getElementById('origenActual').innerText = ` Origen: ${origenGuardado}`;
         seccionNombre.style.display = 'none';
         encabezado.style.display = 'block';
     } else {
