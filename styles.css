@@ -8,6 +8,74 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.formulario-exprecar {
+    background: #ffffff;
+    border-left: 6px solid #da2727e7;
+    border-radius: 12px;
+    padding: 30px 40px;
+    max-width: 480px;
+    margin: 60px auto;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.logo-formulario {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.formulario-exprecar h2 {
+    color: #da2727e7;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.formulario-exprecar p {
+    font-size: 15px;
+    color: #222;
+    margin-bottom: 25px;
+}
+
+.grupo-formulario {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.grupo-formulario label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.grupo-formulario input,
+.grupo-formulario select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+#guardarNombreBtn {
+    background-color: #da2727e7;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+#guardarNombreBtn:hover {
+    background-color: #bb1c1c;
+}
+
 .encabezado-exprecar {
     display: flex;
     flex-direction: column;
