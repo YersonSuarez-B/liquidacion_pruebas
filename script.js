@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nombreInput = document.getElementById('nombreUsuario');
     const guardarNombreBtn = document.getElementById('guardarNombreBtn');
     const seccionNombre = document.getElementById('nombreSeccion');
-    const encabezado = document.getElementById('encabezado-exprecar');
+    const encabezado = document.getElementById('encabezado');
 
     let tarifas = {}, ciudades = [], pesoVolumetricoCalculado = 0;
     let unidades30 = 0, unidades60 = 0, unidades90 = 0;
