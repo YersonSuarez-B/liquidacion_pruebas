@@ -35,8 +35,8 @@
 }
 
 .origen-corporativo {
-    background-color: #ca2d2de7;
-    color: #ffffff;
+    background-color: #da2727e7;
+    color: #000000;
     border-left: 6px solid #7c7c7c;
     padding: 12px 20px;
     border-radius: 12px;
@@ -295,7 +295,7 @@
 
 .total {
     font-weight: bold;
-    color: #d84315;
+    color: #da2727e7;
     font-size: 18px;
 }
 
@@ -358,7 +358,7 @@ input:disabled {
 }
 
 button {
-    background-color: #d63f2e;
+    background-color: #da2727e7;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -367,7 +367,7 @@ button {
 }
 
 button:hover {
-    background-color: #e74c3c;
+    background-color: #da2727e7;
 }
 
 button.volumetrico:disabled {
@@ -428,7 +428,7 @@ button.volumetrico:disabled {
 .close-btn:hover,
 .close-modal-btn:hover,
 .close-volumetric-btn:hover {
-    color: #e74c3c;
+    color: #da2727e7;
 }
 
 #resultadoContenido ul {
