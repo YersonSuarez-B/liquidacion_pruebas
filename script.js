@@ -60,19 +60,20 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('origenUsuario', origen);
             seccionNombre.style.display = 'none';
             formularioCampos.style.display = 'block';
+            document.getElementById('origenActual').innerText = `📍 Origen: ${origen}`; // 🔧 actualización inmediata
         } else {
             alert('Por favor escribe tu nombre y selecciona una ciudad de origen.');
         }
     });
+
     const nombreGuardado = localStorage.getItem('nombreUsuario');
     const origenGuardado = localStorage.getItem('origenUsuario');
 
-    // Mostrar el origen actual en el HTML si existe
     if (origenGuardado) {
-        document.getElementById('origenActual').innerText = `📍 Origen: ${origenGuardado}`;
+        const origenActualElem = document.getElementById('origenActual');
+        if (origenActualElem) origenActualElem.innerText = `📍 Origen: ${origenGuardado}`;
     }
 
-    // Mostrar formulario si ambos datos están completos
     if (nombreGuardado && origenGuardado) {
         seccionNombre.style.display = 'none';
         formularioCampos.style.display = 'block';
@@ -80,15 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
         seccionNombre.style.display = 'block';
         formularioCampos.style.display = 'none';
     }
-
-    // Mostrar u ocultar según si ya está guardado
-    document.addEventListener('DOMContentLoaded', () => {
-        const nombre = localStorage.getItem('nombreUsuario');
-        if (nombre) {
-            seccionNombre.style.display = 'none';
-            formularioCampos.style.display = 'block';
-        }
-    });
 
     aceptarVolumetrico.onclick = () => {
         if (pesoVolumetricoCalculado > 0) {
@@ -233,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let costoTotal = Math.floor(costoCaja + kilosAdicionales + costoSeguro);
 
         const origen = localStorage.getItem('origenUsuario')?.toUpperCase() || 'NO DEFINIDO';
+
         resultadoContenido.innerHTML = `
             <div class="resultado-box">
                 <h3><i class="fas fa-receipt"></i> Resultados de la Liquidación</h3>
