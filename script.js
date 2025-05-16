@@ -69,12 +69,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const nombreGuardado = localStorage.getItem('nombreUsuario');
     const origenGuardado = localStorage.getItem('origenUsuario');
 
-    if (origenGuardado) {
-        const origenActualElem = document.getElementById('origenActual');
-        if (origenActualElem) origenActualElem.innerText = `📍 Origen: ${origenGuardado}`;
-    }
-
-    if (nombreGuardado && origenGuardado) {
+    if (nombreGuardado && !origenGuardado) {
+        // Mostrar campo solo para ciudad
+        nombreInput.value = nombreGuardado; // Prellenar nombre
+        seccionNombre.style.display = 'block';
+        formularioCampos.style.display = 'none';
+    } else if (nombreGuardado && origenGuardado) {
+        document.getElementById('origenActual').innerText = `📍 Origen: ${origenGuardado}`;
         seccionNombre.style.display = 'none';
         formularioCampos.style.display = 'block';
     } else {

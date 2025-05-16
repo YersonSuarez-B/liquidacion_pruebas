@@ -8,51 +8,136 @@
     transition: transform 0.3s ease-in-out;
 }
 
+.origen-box {
+    display: inline-block;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-left: 6px solid #42a5f5;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+.form-card {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    border-radius: 16px;
+    background: #f9f9f9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+.form-card h2 {
+    margin-bottom: 10px;
+    font-size: 22px;
+    color: #2a2a2a;
+}
+
+.form-card p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #555;
+}
+
+.input-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #1e88e5;
+}
+
+#guardarNombreBtn {
+    margin-top: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#guardarNombreBtn:hover {
+    background-color: #43a047;
+}
+
+
 #formularioCampos {
     display: none;
 }
+
 #nombreSeccion {
-  max-width: 400px;
-  margin: 0 auto;
-  background-color: #f7f7f7;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #nombreSeccion h2 {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 #nombreSeccion label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
 }
 
 #nombreSeccion input,
 #nombreSeccion select {
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 #guardarNombreBtn {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #guardarNombreBtn:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .nombre-box {
