@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('origenUsuario', origen);
             seccionNombre.style.display = 'none';
             formularioCampos.style.display = 'block';
-            document.getElementById('origenActual').innerText = `📍 Origen: ${origen}`; // 🔧 actualización inmediata
+            document.getElementById('origenActual').innerText = `Origen: ${origen}`;
         } else {
             alert('Por favor escribe tu nombre y selecciona una ciudad de origen.');
         }
