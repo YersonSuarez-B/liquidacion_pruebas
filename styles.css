@@ -143,11 +143,6 @@
     background-color: #43a047;
 }
 
-
-#encabezado {
-    display: none;
-}
-
 #nombreSeccion {
     max-width: 400px;
     margin: 0 auto;
