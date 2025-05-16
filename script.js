@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     guardarNombreBtn.addEventListener('click', () => {
         const nombre = nombreInput.value.trim();
-        const origen = document.getElementById('origenUsuario').value;
+        const origenSelect = document.getElementById('origenUsuario');
+        const origen = origenSelect.options[origenSelect.selectedIndex].text;
 
         if (nombre.length >= 3 && origen) {
             localStorage.setItem('nombreUsuario', nombre);
