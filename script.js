@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nombreInput = document.getElementById('nombreUsuario');
     const guardarNombreBtn = document.getElementById('guardarNombreBtn');
     const seccionNombre = document.getElementById('nombreSeccion');
-    const formularioCampos = document.getElementById('formularioCampos');
+    const encabezado = document.getElementById('encabezado-exprecar');
 
     let tarifas = {}, ciudades = [], pesoVolumetricoCalculado = 0;
     let unidades30 = 0, unidades60 = 0, unidades90 = 0;
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('nombreUsuario', nombre);
             localStorage.setItem('origenUsuario', origen);
             seccionNombre.style.display = 'none';
-            formularioCampos.style.display = 'block';
+            encabezado.style.display = 'block';
             document.getElementById('origenActual').innerText = `Origen: ${origen}`;
         } else {
             alert('Por favor escribe tu nombre y selecciona una ciudad de origen.');
@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mostrar campo solo para ciudad
         nombreInput.value = nombreGuardado; // Prellenar nombre
         seccionNombre.style.display = 'block';
-        formularioCampos.style.display = 'none';
+        encabezado.style.display = 'none';
     } else if (nombreGuardado && origenGuardado) {
         document.getElementById('origenActual').innerText = `📍 Origen: ${origenGuardado}`;
         seccionNombre.style.display = 'none';
-        formularioCampos.style.display = 'block';
+        encabezado.style.display = 'block';
     } else {
         seccionNombre.style.display = 'block';
-        formularioCampos.style.display = 'none';
+        encabezado.style.display = 'none';
     }
 
     aceptarVolumetrico.onclick = () => {
