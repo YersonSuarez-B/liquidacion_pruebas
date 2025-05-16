@@ -36,7 +36,7 @@
 
 .origen-corporativo {
     background-color: #da2727e7;
-    color: #ffffff;
+    color: #000000;
     border-left: 6px solid #7c7c7c;
     padding: 12px 20px;
     border-radius: 12px;
@@ -50,7 +50,7 @@
 }
 
 .origen-ciudad {
-    background-color: #000000;
+    background-color: #ffffff;
     padding: 3px 10px;
     border-radius: 8px;
 }
